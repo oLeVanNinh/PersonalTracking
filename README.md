@@ -1,0 +1,1 @@
+# Funny app for tracking time spend in each day.
