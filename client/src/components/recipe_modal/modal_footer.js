@@ -4,7 +4,7 @@ class ModalFooter extends Component {
   render() {
     return(
       <div className="modal-footer">
-        <button className="btn"> Close </button>
+        <button className="btn" onClick={this.props.hideModal}> Close </button>
         <button className="btn btn-primary" id="add">Add a Recipe</button>
       </div>
     )

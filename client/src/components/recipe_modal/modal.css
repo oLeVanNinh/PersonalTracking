@@ -1,5 +1,6 @@
 .modal {
   position: fixed;
+  display: none;
   z-index: 1;
   padding-top: 80px;
   left: 0;
@@ -24,6 +25,33 @@
   -webkit-animation-duration: .4s;
   animation-name: animatetop;
   animation-duration: .4s;
+}
+
+@-webkit-keyframes animatetop {
+  from { top: -300px; opacity: 0; }
+  to { top: 0; opacity: 1; }
+}
+
+@keyframes animatetop {
+  from { top: -300px; opacity: 0;}
+  to { top: 0; opacity: 1; }
+}
+
+.hide-modal {
+  -webkit-animation-name: hidemodal;
+  -webkit-animation-duration: .4s;
+  animation-name: hidemodal;
+  animation-duration: .4s;
+}
+
+@-webkit-keyframes hidemodal {
+  from { top: 0; opacity: 1; }
+  to { top: -500px; opacity: 0; }
+}
+
+@keyframes hidemodal {
+  from { top: 0; opacity: 1;}
+  to { top: -500px; opacity: 0; }
 }
 
 .close {
@@ -114,4 +142,8 @@ label {
 
 .modal-footer .btn-primary {
   margin-right: 8px;
+}
+
+.btn-primary:hover {
+  background-color: #0059ff;
 }
