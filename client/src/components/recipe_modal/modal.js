@@ -4,11 +4,24 @@ import ModalBody from './modal_body';
 import ModalFooter from './modal_footer';
 import './modal.css';
 
+const axios = require('axios');
+
 class Modal extends Component {
   constructor(props) {
     super(props);
+      this.state = {
+        name: null,
+        total_time: '',
+        start_date: new Date(),
+        end_date: null
+      }
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
+    this.handleTaskName = this.handleTaskName.bind(this);
+    this.handleTotalTime = this.handleTotalTime.bind(this);
+    this.handleStartDate = this.handleStartDate.bind(this);
+    this.handleEndDate = this.handleEndDate.bind(this);
+    this.handleAddTask = this.handleAddTask.bind(this);
   }
 
   showModal() {
@@ -28,6 +41,33 @@ class Modal extends Component {
     }, 400)
   }
 
+  handleTaskName(e) {
+    this.setState({ name: e.target.value })
+  }
+
+  handleTotalTime(e) {
+    const time = e.target.validity.valid ? e.target.value : this.state.total_time;
+    this.setState({ total_time: time });
+  }
+
+  handleStartDate(date) {
+    this.setState({ start_date: date })
+  }
+
+  handleEndDate(date) {
+    this.setState({ end_date: date })
+  }
+
+  handleAddTask() {
+    axios.post('http://localhost:3001/task/create', this.state)
+    .then(function(response) {
+      console.log(response)
+    })
+    .catch(function(error) {
+      console.log(error)
+    })
+  }
+
   render() {
     return(
       <div>
@@ -35,8 +75,9 @@ class Modal extends Component {
         <div id="myModal" className="modal">
           <div id="modal-content">
             <ModalHeader hideModal={this.hideModal} />
-            <ModalBody />
-            <ModalFooter hideModal={this.hideModal}/>
+            <ModalBody handleTaskName={this.handleTaskName} handleTotalTime={this.handleTotalTime} handleStartDate={this.handleStartDate}
+              handleEndDate={this.handleEndDate} start_date={this.state.start_date} end_date={this.state.end_date} total_time={this.state.total_time}/>
+            <ModalFooter hideModal={this.hideModal} handleAddTask={this.handleAddTask}/>
           </div>
         </div>
       </div>
