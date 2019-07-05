@@ -97,7 +97,7 @@
   width: 100%;
 }
 
-.form-control {
+.form-control,  .react-datepicker__input-container input {
   margin-top: 5px;
   margin-bottom: 5px;
   width: 95%;
@@ -107,6 +107,13 @@
   border: 1px solid #ccc;
 }
 
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker-wrapper .react-datepicker__input-container {
+  width: 100%;
+}
 
 label {
   display: inline-block;
