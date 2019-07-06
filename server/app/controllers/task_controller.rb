@@ -1,13 +1,5 @@
 class TaskController < ApplicationController
-  def index
-  end
-
   def create
-  end
-
-  def update
-  end
-
-  def destroy
+    render json: {hello: "clloud"}
   end
 end

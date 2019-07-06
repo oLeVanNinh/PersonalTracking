@@ -19,12 +19,21 @@ Bundler.require(*Rails.groups)
 
 module Server
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+
     config.api_only = true
+
     config.active_record.schema_format = :sql
+
     config.generators do |g|
       g.test_framework :rspec
+    end
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', header: :any, methods: [:get, :post, :options]
+      end
     end
   end
 end

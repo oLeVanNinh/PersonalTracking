@@ -59,7 +59,15 @@ class Modal extends Component {
   }
 
   handleAddTask() {
-    axios.post('http://localhost:3001/task/create', this.state)
+    console.log(this.state);
+    axios.post('http://localhost:3001/task/create', {
+      task: {
+        name: this.state.name,
+        total_time: this.state.total_time,
+        start_date: this.state.start_date,
+        end_date: this.state.end_date
+      }
+    })
     .then(function(response) {
       console.log(response)
     })

@@ -54,7 +54,6 @@ CREATE TABLE `tasks` (
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 INSERT INTO `schema_migrations` (version) VALUES
-('20190705035736'),
 ('20190705040141');
 
 
