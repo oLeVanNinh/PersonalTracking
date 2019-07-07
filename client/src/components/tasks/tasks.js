@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Task from './task';
 import './tasks.css';
 
@@ -10,7 +9,6 @@ class Tasks extends Component {
       tasks: []
     }
     this.handleClick = this.handleClick.bind(this);
-    this.fetchallTask = this.fetchallTask.bind(this);
   }
 
   handleClick(e) {
@@ -25,25 +23,12 @@ class Tasks extends Component {
     }
   }
 
-  componentDidMount() {
-    this.fetchallTask()
-  }
-
-  fetchallTask() {
-    axios.get('http://localhost:3001/task/index')
-      .then((response) => {
-        this.setState({tasks: response.data["tasks"]})
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
   render() {
+    const tasks = this.props.tasks;
     return(
       <div className="task">
         <h2>Manage Task</h2>
-        {this.state.tasks.length > 0 && this.state.tasks.map((task) =>
+        {tasks.length > 0 && tasks.map((task) =>
           <div key={task["id"]}>
             <button className="accordion" onClick={this.handleClick}>{task["name"]}</button>
             <Task task={task}/>
