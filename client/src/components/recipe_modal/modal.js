@@ -13,7 +13,8 @@ class Modal extends Component {
         name: null,
         total_time: '',
         start_date: new Date(),
-        end_date: null
+        end_date: null,
+        errors: {}
       }
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -59,21 +60,50 @@ class Modal extends Component {
   }
 
   handleAddTask() {
-    console.log(this.state);
-    axios.post('http://localhost:3001/task/create', {
-      task: {
-        name: this.state.name,
-        total_time: this.state.total_time,
-        start_date: this.state.start_date,
-        end_date: this.state.end_date
-      }
-    })
-    .then(function(response) {
-      console.log(response)
-    })
-    .catch(function(error) {
-      console.log(error)
-    })
+    if (this.formValidation()) {
+      axios.post('http://localhost:3001/task/create', {
+        task: {
+          name: this.state.name,
+          total_time: this.state.total_time,
+          start_date: this.state.start_date,
+          end_date: this.state.end_date
+        }
+      })
+      .then(function(response) {
+        console.log(response)
+      })
+      .catch(function(error) {
+        console.log(error)
+      })
+    }
+  }
+
+  formValidation() {
+    let errors = {};
+    let form_valid = true;
+    let current_state = this.state;
+    if (current_state.name === null || current_state.name === "") {
+      form_valid = false;
+      errors["name"] = "Name is required"
+    }
+
+    if (current_state.total_time === "") {
+      form_valid = false;
+      errors["total_time"] = "Spend time is required"
+    }
+
+    if (current_state.end_date === null) {
+      form_valid = false;
+      errors["end_date"] = "End date is required"
+    }
+
+    if (current_state.end_date !== null && current_state.end_date.valueOf() < current_state.start_date.valueOf()) {
+      form_valid = false;
+      errors["end_date"] = "End date is not valid"
+    }
+
+    this.setState({errors: errors})
+    return form_valid;
   }
 
   render() {
@@ -84,7 +114,7 @@ class Modal extends Component {
           <div id="modal-content">
             <ModalHeader hideModal={this.hideModal} />
             <ModalBody handleTaskName={this.handleTaskName} handleTotalTime={this.handleTotalTime} handleStartDate={this.handleStartDate}
-              handleEndDate={this.handleEndDate} start_date={this.state.start_date} end_date={this.state.end_date} total_time={this.state.total_time}/>
+              handleEndDate={this.handleEndDate} start_date={this.state.start_date} end_date={this.state.end_date} total_time={this.state.total_time} errors={this.state.errors}/>
             <ModalFooter hideModal={this.hideModal} handleAddTask={this.handleAddTask}/>
           </div>
         </div>
