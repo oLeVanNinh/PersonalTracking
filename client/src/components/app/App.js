@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import Modal from '../recipe_modal/modal';
+import Modal from '../task_modal/modal';
+import Tasks from '../tasks/tasks';
 import './App.css';
 
 class  App extends Component {
   render() {
-    return(<Modal />)
+    return(
+      <div>
+        <Tasks />
+        <Modal />
+      </div>
+    )
   }
 }
 

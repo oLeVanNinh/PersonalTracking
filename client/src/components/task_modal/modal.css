@@ -80,7 +80,7 @@
 }
 
 .modal-footer {
-  padding: 35px 16px;
+  padding: 25px 16px 50px;
   color: black;
 }
 
@@ -128,37 +128,4 @@ label {
   font-weight: 700;
   margin-top: 12px;
   font-size: 16px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-weight: 400;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  font-size: .875rem;
-  border: 1px solid #959694;
-  border-radius: 4px;
-  user-select: none;
-  background-color: #fff;
-}
-
-.btn:hover {
-  background-color: #e1e2e0;
-}
-
-.btn-primary {
-  background-color: #337ab7;
-  color: white;
-}
-
-.modal-footer .btn-primary {
-  margin-right: 8px;
-}
-
-.btn-primary:hover {
-  background-color: #0059ff;
 }
