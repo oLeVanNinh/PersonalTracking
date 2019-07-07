@@ -31,7 +31,7 @@ class  App extends Component {
     return(
       <div>
         <Tasks tasks={this.state.tasks}/>
-        <Modal />
+        <Modal fetchallTask={this.fetchallTask} />
       </div>
     )
   }

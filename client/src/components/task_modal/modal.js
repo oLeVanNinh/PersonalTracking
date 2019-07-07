@@ -69,10 +69,13 @@ class Modal extends Component {
           end_date: this.state.end_date
         }
       })
-      .then(function(response) {
-        console.log(response)
+      .then((response) => {
+        this.hideModal();
+        setTimeout(() => {
+          this.props.fetchallTask();
+        }, 400);
       })
-      .catch(function(error) {
+      .catch((error) => {
         console.log(error)
       })
     }
