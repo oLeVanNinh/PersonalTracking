@@ -18,7 +18,7 @@ class  App extends Component {
   }
 
   fetchallTask() {
-    axios.get('http://localhost:3001/task/index')
+    axios.get('/task/index')
       .then((response) => {
         this.setState({tasks: response.data["tasks"]})
       })

@@ -61,7 +61,7 @@ class Modal extends Component {
 
   handleAddTask() {
     if (this.formValidation()) {
-      axios.post('http://localhost:3001/task/create', {
+      axios.post('/task/create', {
         task: {
           name: this.state.name,
           total_time: this.state.total_time,

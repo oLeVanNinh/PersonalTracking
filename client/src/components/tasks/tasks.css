@@ -66,3 +66,7 @@
   background-color: #f2433c;
   outline: none;
 }
+
+.button .btn-log {
+  float: right;
+}
