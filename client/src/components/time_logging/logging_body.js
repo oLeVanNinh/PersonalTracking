@@ -1,0 +1,29 @@
+import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+
+class LoggingBody extends Component {
+  render() {
+    const {handleTime, handleDate, selected_date, errors }  = this.props;
+    return(
+      <div className="modal-body">
+        <form className="form">
+          <div className="form-group">
+            <label>Hours spent for this task?</label>
+            {errors["total_time"] && <p className="form-error">{errors["total_time"]}</p>}
+            <input type="text" pattern="[0-9]*" placeholder="The hours that you want to spent for this task" className="form-control"
+              onChange={handleTime} />
+          </div>
+
+          <div className="form-group">
+            <label>The Date</label>
+            {errors["end_date"] && <p className="form-error">{errors["end_date"]}</p>}
+            <DatePicker selected={selected_date} onChange={handleDate}/>
+          </div>
+        </form>
+      </div>
+    )
+  }
+}
+
+export default LoggingBody;

@@ -15,7 +15,7 @@ class Task extends Component {
         <div className="button">
           <button className="btn btn-danger">Delete</button>
           <button className="btn btn-edit">Edit</button>
-          <button className="btn btn-log">Log Time</button>
+          <button className="btn btn-log" onClick={this.props.showLoggingModal}>Log Time</button>
         </div>
       </div>
     )

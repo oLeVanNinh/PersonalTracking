@@ -31,7 +31,7 @@ class Tasks extends Component {
         {tasks.length > 0 && tasks.map((task) =>
           <div key={task["id"]}>
             <button className="accordion" onClick={this.handleClick}>{task["name"]}</button>
-            <Task task={task}/>
+            <Task task={task} showLoggingModal={this.props.showLoggingModal}/>
           </div>
         )}
       </div>
