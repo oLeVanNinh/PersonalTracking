@@ -11,14 +11,12 @@ const axios = require('axios');
 class Logging extends Component {
   constructor(props) {
     super(props);
-      this.state = {
-        name: null,
-        total_time: '',
-        start_date: new Date(),
-        end_date: null,
-        errors: {}
-      }
+    this.state = {
+      spent_time: '',
+      errors: {}
+    }
     this.hideModal = this.hideModal.bind(this);
+    this.handleTime = this.handleTime.bind(this);
   }
 
   hideModal() {
@@ -35,28 +33,19 @@ class Logging extends Component {
     let errors = {};
     let form_valid = true;
     let current_state = this.state;
-    if (current_state.name === null || current_state.name === "") {
-      form_valid = false;
-      errors["name"] = "Name is required"
-    }
 
-    if (current_state.total_time === "") {
+    if (current_state.spent_time === "") {
       form_valid = false;
-      errors["total_time"] = "Spend time is required"
-    }
-
-    if (current_state.end_date === null) {
-      form_valid = false;
-      errors["end_date"] = "End date is required"
-    }
-
-    if (current_state.end_date !== null && current_state.end_date.valueOf() < current_state.start_date.valueOf()) {
-      form_valid = false;
-      errors["end_date"] = "End date is not valid"
+      errors["spent_time"] = "Spend time is required"
     }
 
     this.setState({errors: errors})
     return form_valid;
+  }
+
+  handleTime(e) {
+    const spent_time = e.target.validity.valid ? e.target.value : this.state.spent_time;
+    this.setState({ spent_time: spent_time });
   }
 
   render() {
@@ -65,7 +54,7 @@ class Logging extends Component {
         <div id="myLoggingModal" className="modal">
           <div id="logging-modal-content">
             <LoggingHeader hideModal={this.hideModal} />
-            <LoggingBody errors={this.state.errors}/>
+            <LoggingBody errors={this.state.errors} handleTime={this.handleTime} spent_time={this.state.spent_time}/>
             <LoggingFooter hideModal={this.hideModal} handleAddTask={this.handleAddTask}/>
           </div>
         </div>
