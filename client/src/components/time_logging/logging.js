@@ -13,10 +13,12 @@ class Logging extends Component {
     super(props);
     this.state = {
       spent_time: '',
+      selected_date: new Date(),
       errors: {}
     }
     this.hideModal = this.hideModal.bind(this);
     this.handleTime = this.handleTime.bind(this);
+    this.handleDate = this.handleDate.bind(this);
   }
 
   hideModal() {
@@ -48,13 +50,18 @@ class Logging extends Component {
     this.setState({ spent_time: spent_time });
   }
 
+  handleDate(date) {
+    this.setState({selected_date: date});
+  }
+
   render() {
+    const state = this.state;
     return(
       <div>
         <div id="myLoggingModal" className="modal">
           <div id="logging-modal-content">
             <LoggingHeader hideModal={this.hideModal} />
-            <LoggingBody errors={this.state.errors} handleTime={this.handleTime} spent_time={this.state.spent_time}/>
+            <LoggingBody errors={state.errors} handleTime={this.handleTime} spent_time={state.spent_time} selected_date={state.selected_date} handleDate={this.handleDate} />
             <LoggingFooter hideModal={this.hideModal} handleAddTask={this.handleAddTask}/>
           </div>
         </div>
