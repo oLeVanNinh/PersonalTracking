@@ -10,7 +10,7 @@ class LoggingBody extends Component {
         <form className="form">
           <div className="form-group">
             <label>Hours spent for this task?</label>
-            {errors["spent_time"] && <p className="form-error">{errors["total_time"]}</p>}
+            {errors["spent_time"] && <p className="form-error">{errors["spent_time"]}</p>}
             <input type="text" pattern="[0-9]*" placeholder="The hours that you want to spent for this task" className="form-control"
               onChange={handleTime} value={spent_time}/>
           </div>

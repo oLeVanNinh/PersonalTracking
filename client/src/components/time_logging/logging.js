@@ -19,6 +19,7 @@ class Logging extends Component {
     this.hideModal = this.hideModal.bind(this);
     this.handleTime = this.handleTime.bind(this);
     this.handleDate = this.handleDate.bind(this);
+    this.handleLogging = this.handleLogging.bind(this);
   }
 
   hideModal() {
@@ -54,6 +55,24 @@ class Logging extends Component {
     this.setState({selected_date: date});
   }
 
+  handleLogging() {
+    if (this.formValidation()) {
+      axios.post('/logging_time/create', {
+        logging_time: {
+          spent_time: this.state.spent_time,
+          date: this.state.selected_date,
+          task_id: this.props.task_id
+        }
+      })
+      .then((response) => {
+        this.hideModal();
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    }
+  }
+
   render() {
     const state = this.state;
     return(
@@ -62,7 +81,7 @@ class Logging extends Component {
           <div id="logging-modal-content">
             <LoggingHeader hideModal={this.hideModal} />
             <LoggingBody errors={state.errors} handleTime={this.handleTime} spent_time={state.spent_time} selected_date={state.selected_date} handleDate={this.handleDate} />
-            <LoggingFooter hideModal={this.hideModal} handleAddTask={this.handleAddTask}/>
+            <LoggingFooter hideModal={this.hideModal} handleLogging={this.handleLogging}/>
           </div>
         </div>
       </div>

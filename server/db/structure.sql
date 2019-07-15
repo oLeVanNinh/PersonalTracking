@@ -29,10 +29,11 @@ CREATE TABLE `logging_times` (
   `task_id` bigint(20) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
+  `date` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `index_logging_times_on_task_id` (`task_id`),
   CONSTRAINT `fk_rails_9194f50b2e` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `schema_migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -69,6 +70,7 @@ CREATE TABLE `tasks` (
 
 INSERT INTO `schema_migrations` (version) VALUES
 ('20190705040141'),
-('20190715153259');
+('20190715153259'),
+('20190715155735');
 
 
