@@ -66,6 +66,9 @@ class Logging extends Component {
       })
       .then((response) => {
         this.hideModal();
+        setTimeout(() => {
+          this.props.fetchallTask();
+        }, 400);
       })
       .catch((error) => {
         console.log(error)

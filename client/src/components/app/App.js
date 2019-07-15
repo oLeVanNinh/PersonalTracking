@@ -44,7 +44,7 @@ class  App extends Component {
       <div>
         <Tasks tasks={this.state.tasks} showLoggingModal={this.showLoggingModal} />
         <Modal fetchallTask={this.fetchallTask} />
-        <Logging task_id={this.state.task_id} />
+        <Logging task_id={this.state.task_id} fetchallTask={this.fetchallTask}/>
       </div>
     )
   }
