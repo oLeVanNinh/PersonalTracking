@@ -27,7 +27,6 @@ set :assets_roles, []
 
 set :scm,                       :git
 set :branch,                    :deploy
-set :branch,                    :master
 set :format,                    :pretty
 set :log_level,                 :debug
 set :keep_releases,             5
