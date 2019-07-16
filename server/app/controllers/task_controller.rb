@@ -1,6 +1,6 @@
 class TaskController < ApplicationController
   def index
-    tasks = Task.all
+    tasks = Task.includes(:logging_times).all
     tasks = format_response(tasks)
 
     render json: {tasks: tasks}

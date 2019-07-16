@@ -7,6 +7,7 @@ import LoggingFooter from './logging_footer';
 import './logging.css';
 
 const axios = require('axios');
+const base_url = process.env.REACT_APP_SERVER_URL
 
 class Logging extends Component {
   constructor(props) {
@@ -57,7 +58,7 @@ class Logging extends Component {
 
   handleLogging() {
     if (this.formValidation()) {
-      axios.post('/logging_time/create', {
+      axios.post(base_url + '/logging_time/create', {
         logging_time: {
           spent_time: this.state.spent_time,
           date: this.state.selected_date,

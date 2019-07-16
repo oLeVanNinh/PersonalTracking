@@ -5,6 +5,7 @@ import ModalFooter from './modal_footer';
 import './modal.css';
 
 const axios = require('axios');
+const base_url = process.env.REACT_APP_SERVER_URL
 
 class Modal extends Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class Modal extends Component {
 
   handleAddTask() {
     if (this.formValidation()) {
-      axios.post('/task/create', {
+      axios.post(base_url + '/task/create', {
         task: {
           name: this.state.name,
           total_time: this.state.total_time,

@@ -5,6 +5,8 @@ import Tasks from '../tasks/tasks';
 import Logging from '../time_logging/logging';
 import './App.css';
 
+const base_url = process.env.REACT_APP_SERVER_URL;
+
 class  App extends Component {
   constructor(props) {
     super(props);
@@ -30,7 +32,7 @@ class  App extends Component {
   }
 
   fetchallTask() {
-    axios.get('/task/index')
+    axios.get(base_url + '/task/index')
       .then((response) => {
         this.setState({tasks: response.data["tasks"]})
       })
