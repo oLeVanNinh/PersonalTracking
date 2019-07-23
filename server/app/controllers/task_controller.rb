@@ -28,6 +28,7 @@ class TaskController < ApplicationController
       end_date = task.end_date.strftime("%d/%m/%Y")
       spent_time = task.logging_times.nil? ? 0 : task.logging_times.sum(:spent_time)
       remain_time = task.total_time - spent_time
+      remain_time = remain_time > 0 ? remain_time : 0
       day_between = (task.end_date.to_date - task.start_date.to_date).to_i
       average_time = remain_time.to_f / day_between
 

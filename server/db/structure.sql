@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `logging_times`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `logging_times` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `spent_time` int(11) DEFAULT NULL,
+  `spent_time` decimal(5,2) DEFAULT NULL,
   `task_id` bigint(20) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE `logging_times` (
   PRIMARY KEY (`id`),
   KEY `index_logging_times_on_task_id` (`task_id`),
   CONSTRAINT `fk_rails_9194f50b2e` FOREIGN KEY (`task_id`) REFERENCES `tasks` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `schema_migrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -56,7 +56,7 @@ CREATE TABLE `tasks` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -71,6 +71,7 @@ CREATE TABLE `tasks` (
 INSERT INTO `schema_migrations` (version) VALUES
 ('20190705040141'),
 ('20190715153259'),
-('20190715155735');
+('20190715155735'),
+('20190723105422');
 
 
