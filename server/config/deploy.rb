@@ -26,7 +26,6 @@ set :puma_init_active_record,   true
 set :assets_roles, []
 
 set :scm,                       :git
-set :branch,                    :deploy
 set :branch,                    :master
 set :format,                    :pretty
 set :log_level,                 :debug
@@ -52,8 +51,8 @@ namespace :deploy do
   desc "Make sure local git is sync with remote"
   task :check_revision do
     on roles(:app) do
-      unless `git rev-parse HEAD` == `git rev-parse origin/deploy`
-        puts "WARNING: HEAD is not the same as origin deploy"
+      unless `git rev-parse HEAD` == `git rev-parse origin/master`
+        puts "WARNING: HEAD is not the same as origin master"
         puts "Run git push to sync changes"
         exit
       end
