@@ -25,6 +25,8 @@ module Server
 
     config.active_record.schema_format = :sql
 
+    config.time_zone = "Hanoi"
+
     config.generators do |g|
       g.test_framework :rspec
     end
