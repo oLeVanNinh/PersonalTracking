@@ -16,6 +16,10 @@ class TaskController < ApplicationController
     end
   end
 
+  def upload
+    render json: {status: 'ok'}
+  end
+
   private
 
   def task_params
